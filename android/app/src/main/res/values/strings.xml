@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SkillOrbit</string>
+    <string name="title_activity_main">SkillOrbit</string>
+    <string name="package_name">com.skillorbit.app</string>
+    <string name="custom_url_scheme">com.skillorbit.app</string>
+</resources>
