@@ -3,7 +3,9 @@ import { defineConfig, loadEnv } from 'vite'
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-  const apiBase = (env.VITE_API_BASE_URL || env.APP_BASE_URL || '').trim().replace(/\/$/, '')
+  // The website and Express API are served from the same Render origin, so web builds
+  // should use relative /api requests. Only the Android WebView needs an absolute API URL.
+  const apiBase = mode === 'android' ? (env.VITE_API_BASE_URL || '').trim().replace(/\/$/, '') : ''
   if (mode === 'android') {
     let target: URL | undefined
     try { target = new URL(apiBase) } catch { /* handled below */ }
